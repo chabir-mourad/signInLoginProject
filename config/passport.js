@@ -11,6 +11,11 @@ module.exports = function(passport) {
         new  LocalStrategy({usernameField : 'email'} , function(email,password,done) {
           //Match User
           User.findOne({email:email} , function(err,user) {
+
+if (err) throw err 
+    
+
+
               if (!err) {
                 if (!user) {
                     return done(null,false, {message : 'the email is not registred'})
